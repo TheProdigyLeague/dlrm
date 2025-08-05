@@ -244,17 +244,18 @@ class CriteoDataset(Dataset):
 
                 # create training, validation, and test sets
                 if split == "train":
-                    self.X_int = [X_int[i] for i in train_indices]
-                    self.X_cat = [X_cat[i] for i in train_indices]
-                    self.y = [y[i] for i in train_indices]
+                    self.X_int = X_int[train_indices]
+                    self.X_cat = X_cat[train_indices]
+                    self.y = y[train_indices]
                 elif split == "val":
-                    self.X_int = [X_int[i] for i in val_indices]
-                    self.X_cat = [X_cat[i] for i in val_indices]
-                    self.y = [y[i] for i in val_indices]
+                    self.X_int = X_int[val_indices]
+                    self.X_cat = X_cat[val_indices]
+                    self.y = y[val_indices]
                 elif split == "test":
-                    self.X_int = [X_int[i] for i in test_indices]
-                    self.X_cat = [X_cat[i] for i in test_indices]
-                    self.y = [y[i] for i in test_indices]
+                    test_indices = np.array(test_indices)
+                    self.X_int = X_int[test_indices]
+                    self.X_cat = X_cat[test_indices]
+                    self.y = y[test_indices]
 
             print("Split data according to indices...")
 
