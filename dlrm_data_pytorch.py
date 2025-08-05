@@ -226,7 +226,7 @@ class CriteoDataset(Dataset):
                 indices = np.array_split(indices, self.offset_per_file[1:-1])
 
                 # randomize train data (per day)
-                if randomize == "day":  # or randomize == "total":
+                if randomize == "day" or randomize == "total":
                     for i in range(len(indices) - 1):
                         indices[i] = np.random.permutation(indices[i])
                     print("Randomized indices per day ...")
